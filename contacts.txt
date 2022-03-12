@@ -1,3 +1,8 @@
-John 1234567890
-Mary 7896541231
-Harry 4567893214
+[
+  {
+    "phone": "1 (234) 567-891, 1 (234) 987-654",
+    "business hours": "Mon-Fri 10AM - 8PM ",
+    "email":"support@tutoraway.com",
+    "location": "121 Rock Street, 21 Avenue,New York, NY 92103-9000"
+  }
+]
