@@ -11,21 +11,24 @@ if (!$con) {
 
 //   echo "Connected successfully";
 
-if(isset($_POST["name"])){
-    $name = $_POST['name'];  
-  } 
+$userid=$_POST['userid'];
+$name = $_POST['name'];  
+$email=$_POST['email'];
+$city=$_POST['city'];
+$phone=$_POST['phone'];
 
-$sql = "select * from users".($name?" where name='$name'":''); 
-// echo $sql;
+$sql = "select * from users where ".($userid!='[object HTMLInputElement]'? 
+"userid = '$userid'" : "name like '%$name%' and email like '%$email%' and city like '%$city%' and phone like '%$phone%'"); 
+//echo $sql;
 
 $result = mysqli_query($con,$sql);
 
-if (mysqli_num_rows($result)>1) echo '[';
+echo '[';
 
 for ($i=0 ; $i<mysqli_num_rows($result) ; $i++) {
     echo ($i>0?',':'').json_encode(mysqli_fetch_object($result));
 }
 
-if (mysqli_num_rows($result)>1) echo ']';
+echo ']';
 
 mysqli_close($con);
